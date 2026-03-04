@@ -979,7 +979,10 @@ const TMDB_PROFILE = 'https://image.tmdb.org/t/p/w185';
 function spin() {
   if (spinning) return;
   spinning = true;
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Scroll to top - use multiple methods for PWA compatibility
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+  window.scrollTo(0, 0);
   btn.disabled = true;
   document.querySelectorAll('.mood-btn').forEach(b => b.disabled = true);
   btn.textContent = 'Trekker…';
